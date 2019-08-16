@@ -21,22 +21,13 @@ let getQuotes = () => {
             const imgTag = '<img src="./DonaldPics/CardPics/' + img + '" class="card-img-top">';
 
             const quote = data.value;
+            const toWho = data.tags[0];
             const quoteTag = '<p class="mb-0">' + quote + '</p>';
-            const footerTag = '<footer class="blockquote-footer">Donald Trump <cite title="Source Title"> Most likely on Twitter!</cite></footer>';
+            const footerTag = '<footer class="blockquote-footer">Donald Trump <cite title="Source Title"> to ' + toWho + ', most likely on Twitter!</cite></footer>';
             const blockTag = '<blockquote class="blockquote">' + quoteTag + footerTag + '</blockquote>';
             const cardBody = '<div class="card-body">' + blockTag + '</div>';
 
-            const tags = data.tags;
-            let tagsList = '<div class="container-fluid">';
-            tags.forEach((tag) => {
-                const tagTag = '<li class="list-inline-item"></li>' + tag + '</li>';
-                tagsList += tagTag;
-            })
-            tagsList += '</div>';
-
-            const tagsContainer = '<div class="container-fluid">' + tagsList + '</div>';
-
-            const card = '<div class="card" style="width: 18rem; margin: 30px 0;">' + imgTag + cardBody + tagsContainer + '</div>';
+            const card = '<div class="card" style="width: 18rem; margin: 30px 0;">' + imgTag + cardBody + '</div>';
 
             const col = '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">' + card + '</div>';
             cardsDiv.append(col);
